@@ -1,15 +1,17 @@
 /* Theme tokens and global reset. */
 :root {
-    --bg: #f3f3f3;
+    --bg: #f5f7f9;
     --panel: #ffffff;
-    --text: #1f1f1f;
-    --muted: #666666;
-    --line: #ddc488;
-    --primary: #c07f1f;
-    --primary-dark: #8a5812;
-    --ok: #cfe9c6;
-    --warn: #f6e5a8;
-    --bad: #efb5b5;
+    --text: #1f2a38;
+    --muted: #54606a;
+    --line: #d7dde4;
+    --primary: #2f5d8a;
+    --primary-dark: #244d74;
+    --primary-soft: #e9f1fb;
+    --ok: #d8e4d9;
+    --warn: #f7e3b8;
+    --bad: #f4d8d8;
+    --shadow: 0 18px 40px rgba(31, 45, 61, 0.08);
 }
 
 * {
@@ -18,9 +20,9 @@
 
 body {
     margin: 0;
-    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     color: var(--text);
-    background: radial-gradient(circle at 20% 0%, #fafafa, #ececec 50%, #e5e5e5 100%);
+    background: linear-gradient(180deg, #f7f9fb 0%, #eef4f8 100%);
 }
 
 .page {
@@ -29,9 +31,7 @@ body {
 
 .app-page {
     position: relative;
-    background:
-        linear-gradient(180deg, rgba(253, 248, 232, 0.8) 0%, rgba(247, 237, 211, 0.8) 100%),
-        url("/background.png") center / cover fixed no-repeat;
+    background: linear-gradient(180deg, rgba(248, 249, 251, 0.92) 0%, rgba(238, 244, 248, 0.98) 100%);
 }
 
 .app-page::before,
@@ -45,14 +45,12 @@ body {
     justify-content: space-between;
     gap: 1rem;
     padding: 1.15rem 1.5rem;
-    border: none;
-    border-bottom: 2px solid #d6a64f;
-    border-radius: 0;
-    background: linear-gradient(180deg, #fffaf0 0%, #f8efd8 100%);
+    border-bottom: 1px solid var(--line);
+    background: #ffffff;
     position: sticky;
     top: 0;
     z-index: 2;
-    box-shadow: 0 4px 10px rgba(104, 84, 46, 0.12);
+    box-shadow: var(--shadow);
     overflow: hidden;
     margin: 0;
 }
@@ -78,13 +76,13 @@ body {
     width: 4.7rem;
     height: 4.7rem;
     border-radius: 50%;
-    border: 4px solid #e1b25d;
-    background: #fff7e3;
+    border: 4px solid var(--primary-muted);
+    background: var(--primary-soft);
     object-fit: cover;
 }
 
 .topbar-avatar-fallback {
-    color: #a46211;
+    color: var(--primary-dark);
     font-size: 2rem;
     display: grid;
     place-items: center;
@@ -95,13 +93,13 @@ body {
     margin: 0;
     font-size: 2.05rem;
     font-weight: 800;
-    color: #9f6311;
+    color: var(--primary-dark);
     line-height: 1;
 }
 
 .topbar-subtitle {
     margin: 0;
-    color: #9d7232;
+    color: var(--muted);
     font-size: 0.95rem;
     font-weight: 600;
 }
@@ -118,23 +116,15 @@ body {
 }
 
 .header-logo {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    height: 66px;
-    width: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 3px 6px rgba(92, 65, 20, 0.16));
-    pointer-events: none;
+    display: none;
 }
 
 .topbar-right .btn {
     border-radius: 10px;
     padding: 0.62rem 1.55rem;
-    background: #fff7e6;
-    border: 1px solid #d5b57a;
-    color: #3a2a10;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    color: var(--text);
     box-shadow: none;
 }
 
@@ -165,64 +155,73 @@ body {
 }
 
 .pet-login-card {
-    width: min(620px, 100%);
-    border: 2px solid #d6a64f;
-    border-radius: 28px;
-    background: linear-gradient(180deg, #fffefb 0%, #fff9ee 100%);
-    padding: clamp(1.1rem, 1.5vw, 1.6rem);
-    box-shadow:
-        0 0 0 3px rgba(255, 248, 227, 0.75),
-        0 20px 38px rgba(92, 69, 26, 0.18);
+    width: min(560px, 100%);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: var(--panel);
+    padding: clamp(1.4rem, 2vw, 2rem);
+    box-shadow: var(--shadow);
     display: grid;
-    gap: 1.05rem;
+    gap: 1rem;
     animation: card-rise 380ms ease-out;
 }
 
-.pet-login-logo {
-    width: min(520px, 100%);
-    margin: 0 auto;
-    display: block;
-    object-fit: contain;
+.pet-login-branding {
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.pet-login-branding h1 {
+    margin: 0;
+    font-size: clamp(2rem, 2.5vw, 2.4rem);
+    letter-spacing: -0.04em;
+    color: var(--text);
+}
+
+.login-tagline {
+    margin: 0.5rem 0 0;
+    color: var(--muted);
+    font-size: 0.98rem;
 }
 
 .pet-login-form {
     display: grid;
-    gap: 0.68rem;
+    gap: 0.9rem;
 }
 
 .pet-field-label {
     font-size: 0.82rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    font-weight: 800;
-    color: #8a5b16;
+    font-weight: 700;
+    color: var(--muted);
 }
 
 .pet-input-wrap {
     display: flex;
     align-items: stretch;
-    border: 2px solid #d9bd7e;
+    border: 1px solid var(--line);
     border-radius: 16px;
     overflow: hidden;
-    background: #fff9eb;
+    background: var(--primary-soft);
     min-height: 58px;
 }
 
 .pet-input-icon {
-    width: 64px;
+    width: 62px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #a67821;
-    font-weight: 800;
-    font-size: 1.05rem;
-    border-right: 1px solid #e9d4ac;
-    background: linear-gradient(180deg, #fbf1d4 0%, #f8e9c4 100%);
+    color: var(--primary-dark);
+    font-weight: 700;
+    font-size: 1rem;
+    border-right: 1px solid var(--line);
+    background: var(--primary-muted);
 }
 
 .pet-input-icon svg {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
     fill: none;
     stroke: currentColor;
     stroke-width: 1.8;
@@ -233,9 +232,10 @@ body {
 .pet-input-wrap input {
     border: none;
     border-radius: 0;
-    padding: 0.82rem 0.88rem;
+    padding: 0.9rem 1rem;
     background: transparent;
-    font-size: 1.02rem;
+    font-size: 1rem;
+    color: var(--text);
 }
 
 .pet-input-wrap input:focus-visible {
@@ -246,39 +246,41 @@ body {
 .pet-input-wrap input:-webkit-autofill:hover,
 .pet-input-wrap input:-webkit-autofill:focus,
 .pet-input-wrap input:-webkit-autofill:active {
-    -webkit-text-fill-color: #4f3308;
-    caret-color: #4f3308;
-    box-shadow: 0 0 0 1000px #fff9eb inset;
-    -webkit-box-shadow: 0 0 0 1000px #fff9eb inset;
+    -webkit-text-fill-color: var(--text);
+    caret-color: var(--text);
+    box-shadow: 0 0 0 1000px var(--primary-soft) inset;
+    -webkit-box-shadow: 0 0 0 1000px var(--primary-soft) inset;
     transition: background-color 9999s ease-in-out 0s;
 }
 
 .pet-login-button {
     margin-top: 0.6rem;
-    border: 1px solid #c98e3f;
+    border: none;
     border-radius: 14px;
-    background: linear-gradient(180deg, #f6cf70 0%, #eeaf3d 100%);
-    color: #4f3308;
-    font-size: 1.95rem;
-    font-weight: 800;
-    padding: 0.8rem 0.95rem;
+    background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.95rem 1rem;
     cursor: pointer;
-    transition: transform 0.13s ease, background 0.18s ease;
+    transition: transform 0.13s ease, background 0.18s ease, box-shadow 0.18s ease;
 }
 
 .pet-login-button:hover:not(:disabled) {
     transform: translateY(-1px);
-    background: linear-gradient(180deg, #f9d884 0%, #f1ba58 100%);
+    background: linear-gradient(180deg, #3a6f9b 0%, #254a71 100%);
+    box-shadow: 0 12px 24px rgba(31, 45, 61, 0.12);
 }
 
 .pet-login-button:disabled {
-    opacity: 0.55;
+    opacity: 0.65;
     cursor: not-allowed;
 }
 
 .pet-login-error {
     margin: 0;
-    font-size: 0.88rem;
+    font-size: 0.92rem;
+    color: var(--danger);
 }
 
 @keyframes card-rise {
@@ -321,32 +323,40 @@ body {
 
 .sidebar-btn {
     padding: 0.75rem 1rem;
-    border: 1px solid #e2c687;
-    background: #fffaf0;
-    color: #6e4d1e;
+    border: 1px solid var(--line);
+    background: var(--primary-soft);
+    color: var(--text);
     border-radius: 10px;
     cursor: pointer;
     font-size: 0.86rem;
     font-weight: 700;
     letter-spacing: 0.01em;
     text-align: left;
-    transition: transform 0.14s ease, box-shadow 0.16s ease, background 0.16s ease;
+    transition: transform 0.14s ease, box-shadow 0.16s ease, background 0.16s ease, border-color 0.16s ease;
 }
 
 .sidebar-btn:hover {
     transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(128, 95, 35, 0.1);
+    box-shadow: 0 10px 18px rgba(31, 45, 61, 0.08);
 }
 
 .sidebar-btn.active {
-    background: linear-gradient(180deg, #f6cf70 0%, #eeaf3d 100%);
-    color: #4f3308;
+    background: var(--primary);
+    color: #ffffff;
     border-color: var(--primary-dark);
 }
 
 .dashboard-main {
     flex: 1;
     min-width: 0;
+}
+
+.topbar-logo-text {
+    font-size: 0.92rem;
+    color: var(--muted);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 /* Shared panel and typography primitives. */

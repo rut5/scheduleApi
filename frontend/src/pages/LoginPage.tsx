@@ -1,6 +1,5 @@
 import { type FormEvent, type ReactElement, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import loginLogo from "../assets/login-logo.png";
 import { handleLogin } from "../api/login.js";
 
 type LoginFormState = {
@@ -41,11 +40,12 @@ export default function LoginPage(): ReactElement {
     <div className="page login-page">
       <main className="pet-login-shell">
         <section className="pet-login-card">
-          <img
-            className="pet-login-logo"
-            src={loginLogo}
-            alt="Paws and Plates logo - a stylized paw print with a plate and utensils"
-          />
+          <div className="pet-login-branding">
+            <h1>Sundsgårdens</h1>
+            <p className="login-tagline">
+              Staff sign in for restaurant scheduling and shift planning.
+            </p>
+          </div>
 
           <form className="pet-login-form" onSubmit={onSubmit}>
             <label className="pet-field-label" htmlFor="username">
@@ -73,7 +73,7 @@ export default function LoginPage(): ReactElement {
             </div>
 
             <label className="pet-field-label" htmlFor="password">
-              Pawsword
+              Password
             </label>
             <div className="pet-input-wrap">
               <span className="pet-input-icon" aria-hidden="true">

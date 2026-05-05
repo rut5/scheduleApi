@@ -7,7 +7,6 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/logo.png";
 import {
   getProfileImage,
   PROFILE_IMAGE_OPTIONS,
@@ -581,15 +580,11 @@ export default function EmployerPage(): ReactElement {
               {headerInitial}
             </div>
           )}
-          <h1>Manager Baa-ry</h1>
-          <p className="topbar-subtitle">Schedule Administration</p>
+          <h1>Sundsgårdens</h1>
+          <p className="topbar-subtitle">Manager Dashboard</p>
         </div>
         <div className="topbar-right">
-          <img
-            className="header-logo"
-            src={logo}
-            alt="Sundsgarden Hotell och Konferens"
-          />
+          <div className="topbar-logo-text">Sundsgårdens</div>
           <button className="btn btn-secondary" onClick={logout} type="button">
             Log out
           </button>

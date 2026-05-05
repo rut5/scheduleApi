@@ -9,7 +9,6 @@ import {
   useState,
 } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import logo from "../assets/logo.png";
 import {
   getProfileImage,
   prepareProfileImage,
@@ -605,15 +604,11 @@ export default function EmployeePage(): ReactElement {
               {headerInitial}
             </div>
           )}
-          <h1>{getFirstName(myUser.name)}</h1>
-          <p className="topbar-subtitle">My Schedule</p>
+          <h1>Sundsgårdens</h1>
+          <p className="topbar-subtitle">Welcome back, {getFirstName(myUser.name)}</p>
         </div>
         <div className="topbar-right">
-          <img
-            className="header-logo"
-            src={logo}
-            alt="Sundsgarden Hotell och Konferens"
-          />
+          <div className="topbar-logo-text">Sundsgårdens</div>
           <button className="btn btn-secondary" onClick={logout} type="button">
             Log out
           </button>
