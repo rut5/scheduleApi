@@ -7,10 +7,6 @@ import {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  getProfileImage,
-  PROFILE_IMAGE_OPTIONS,
-} from "../assets/profileImages";
 import { type ScheduleEntry } from "../api/schedule";
 import {
   EMAIL_PATTERN,
@@ -58,7 +54,6 @@ type EmployeeFormState = {
   email: string;
   role: string;
   loginCode: string;
-  profileImageKey: string;
 };
 
 type RequestReviewStatus = "approved" | "rejected";
@@ -122,13 +117,10 @@ export default function EmployerPage(): ReactElement {
     email: "",
     role: EMPLOYEE_ROLE_OPTIONS[0],
     loginCode: "",
-    profileImageKey: "",
   });
   const headerName =
     sessionUser?.name || sessionUser?.username || "Employer Account";
-  const headerAvatar = sessionUser
-    ? getProfileImage(sessionUser.username)
-    : undefined;
+  const headerAvatar = undefined;
   const headerInitial = headerName.slice(0, 1).toUpperCase();
 
   const getFirstName = (name: string): string => {
@@ -167,13 +159,15 @@ export default function EmployerPage(): ReactElement {
 
   const employeeList = useMemo(
     () =>
-      backendEmployees.map((emp) => ({
-        username: emp.loginCode,
-        name: `${emp.firstName} ${emp.lastName}`.trim(),
-        email: emp.user.email,
-        role: emp.role,
-        profileImageKey: emp.profileImageKey,
-      })),
+      backendEmployees
+        .filter((emp) => emp.loginCode !== "admin")
+        .map((emp) => ({
+          username: emp.loginCode,
+          name: `${emp.firstName} ${emp.lastName}`.trim(),
+          email: emp.user.email,
+          role: emp.role,
+          profileImageKey: emp.profileImageKey ?? undefined,
+        })),
     [backendEmployees],
   );
 
@@ -291,7 +285,6 @@ export default function EmployerPage(): ReactElement {
     const emp = employeeList.find((e) => e.username === selectedStaffUsername);
     if (!emp) return null;
     return {
-      image: getProfileImage(emp.username, emp.profileImageKey ?? undefined),
       initial: emp.name.slice(0, 1).toUpperCase(),
     };
   }, [selectedStaffUsername, employeeList]);
@@ -494,7 +487,6 @@ export default function EmployerPage(): ReactElement {
       email: "",
       role: EMPLOYEE_ROLE_OPTIONS[0],
       loginCode: "",
-      profileImageKey: "",
     });
     setRegisterError("");
     setSection("employees");
@@ -566,21 +558,13 @@ export default function EmployerPage(): ReactElement {
       {/* Global dashboard header with employer context and quick logout. */}
       <header className="topbar">
         <div className="topbar-left">
-          {headerAvatar ? (
-            <img
-              className="topbar-avatar"
-              src={headerAvatar}
-              alt={headerName}
-            />
-          ) : (
-            <div
-              className="topbar-avatar topbar-avatar-fallback"
-              aria-hidden="true"
-            >
-              {headerInitial}
-            </div>
-          )}
-          <h1>Sundsgårdens</h1>
+          <div
+            className="topbar-avatar topbar-avatar-fallback"
+            aria-hidden="true"
+          >
+            {headerInitial}
+          </div>
+          <h1>{headerName}</h1>
           <p className="topbar-subtitle">Manager Dashboard</p>
         </div>
         <div className="topbar-right">
@@ -620,21 +604,9 @@ export default function EmployerPage(): ReactElement {
               <div className="employee-cards">
                 {employeeList.map((employee) => (
                   <article className="employee-card" key={employee.username}>
-                    {getProfileImage(
-                      employee.username,
-                      employee.profileImageKey,
-                    ) ? (
-                      <img
-                        className="employee-avatar"
-                        src={getProfileImage(
-                          employee.username,
-                          employee.profileImageKey,
-                        )}
-                        alt={employee.name}
-                      />
-                    ) : (
-                      <div className="avatar" />
-                    )}
+                    <div className="avatar avatar-fallback">
+                      {employee.name.split(" ").map((n) => n[0]).join("").toUpperCase()}
+                    </div>
                     <h3>{employee.name}</h3>
                     <p>{employee.email}</p>
                     <label className="inline-label">Role</label>
@@ -734,34 +706,7 @@ export default function EmployerPage(): ReactElement {
                       required
                     />
 
-                    <label htmlFor="register-image">Profile image</label>
-                    <select
-                      id="register-image"
-                      value={form.profileImageKey}
-                      onChange={(event) =>
-                        setForm((prev) => ({
-                          ...prev,
-                          profileImageKey: event.target.value,
-                        }))
-                      }
-                    >
-                      <option value="">No image</option>
-                      {PROFILE_IMAGE_OPTIONS.map((option) => (
-                        <option key={option.key} value={option.key}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                    {form.profileImageKey && (
-                      <img
-                        className="employee-avatar register-preview"
-                        src={getProfileImage(
-                          form.loginCode || form.email || "employee",
-                          form.profileImageKey,
-                        )}
-                        alt="New employee preview"
-                      />
-                    )}
+
                   </div>
                   {registerError && (
                     <p className="error" role="alert" aria-live="polite">
@@ -783,15 +728,6 @@ export default function EmployerPage(): ReactElement {
               <p className="muted planning-mode-note">
                 Planning mode controls schedule editing. When off, schedule is
                 locked.
-              </p>
-              <p className="muted planning-color-note">
-                Head Pawtender - Mint
-                <br />
-                Snack Sprinter - Orange
-                <br />
-                Taste Tester - Rose
-                <br />
-                Chief Napper - Indigo
               </p>
 
               <div className="schedule-tools-row">

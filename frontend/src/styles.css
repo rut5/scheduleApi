@@ -139,12 +139,7 @@ body {
 }
 
 .login-page {
-    background:
-        radial-gradient(circle at 10% 14%, rgba(210, 190, 134, 0.12) 0, rgba(210, 190, 134, 0.12) 4px, transparent 5px),
-        radial-gradient(circle at 86% 28%, rgba(210, 190, 134, 0.1) 0, rgba(210, 190, 134, 0.1) 3px, transparent 4px),
-        radial-gradient(circle at 16% 82%, rgba(210, 190, 134, 0.08) 0, rgba(210, 190, 134, 0.08) 4px, transparent 5px),
-        linear-gradient(180deg, rgba(253, 246, 223, 0.86) 0%, rgba(248, 237, 208, 0.86) 100%),
-        url("/background.png") center / cover no-repeat;
+    background: #f7f9fb;
 }
 
 .pet-login-shell {
@@ -308,11 +303,11 @@ body {
     position: sticky;
     top: 90px;
     height: fit-content;
-    border: 2px solid #ddb35f;
+    border: 1px solid var(--line);
     border-radius: 16px;
-    background: #f7f2e2;
+    background: #ffffff;
     padding: 0.7rem;
-    box-shadow: 0 8px 18px rgba(95, 71, 24, 0.08);
+    box-shadow: 0 12px 24px rgba(31, 45, 61, 0.06);
 }
 
 .sidebar-nav {
@@ -372,24 +367,12 @@ body {
     animation: panel-in 280ms ease-out;
 }
 
-.panel-employees {
-    background: linear-gradient(180deg, #fffdf6 0%, #fff7e8 100%);
-}
-
-.panel-register {
-    background: linear-gradient(180deg, #fff9ed 0%, #fff2dd 100%);
-}
-
-.panel-schedule {
-    background: linear-gradient(180deg, #fffcf3 0%, #fff4de 100%);
-}
-
-.panel-profile {
-    background: linear-gradient(180deg, #fffdf4 0%, #fff5e3 100%);
-}
-
+.panel-employees,
+.panel-register,
+.panel-schedule,
+.panel-profile,
 .panel-availability {
-    background: linear-gradient(180deg, #fffdf4 0%, #fff3dd 100%);
+    background: #ffffff;
 }
 
 h2 {
@@ -465,8 +448,8 @@ select {
 
 .btn {
     border: 1px solid var(--primary-dark);
-    background: linear-gradient(180deg, #f6cf70 0%, #eeaf3d 100%);
-    color: #4f3308;
+    background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: #ffffff;
     border-radius: 10px;
     padding: 0.45rem 0.8rem;
     cursor: pointer;
@@ -476,7 +459,7 @@ select {
 
 .btn:hover:not(:disabled) {
     transform: translateY(-1px);
-    box-shadow: 0 6px 12px rgba(117, 84, 28, 0.15);
+    box-shadow: 0 6px 12px rgba(31, 45, 61, 0.15);
     filter: saturate(1.05);
 }
 
@@ -499,15 +482,15 @@ summary:focus-visible {
 }
 
 .btn.btn-secondary {
-    background: #fff7e3;
-    border-color: #dfc587;
-    color: #6f4d1a;
+    background: #ffffff;
+    border-color: var(--line);
+    color: var(--text);
 }
 
 .btn.btn-secondary.is-active {
-    background: #f8ddb2;
-    border-color: #c98e3f;
-    color: #6b3f0a;
+    background: var(--primary-soft);
+    border-color: var(--primary);
+    color: var(--primary-dark);
 }
 
 .employee-cards {
@@ -533,9 +516,9 @@ summary:focus-visible {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    border: 1px solid #c68833;
-    background: linear-gradient(180deg, #f8d47d 0%, #f0b655 100%);
-    color: #5d3e0d;
+    border: 1px solid var(--primary);
+    background: linear-gradient(180deg, var(--primary-soft) 0%, var(--primary-muted) 100%);
+    color: var(--primary-dark);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -564,8 +547,20 @@ summary:focus-visible {
     height: 112px;
     border-radius: 50%;
     margin-bottom: 0.65rem;
-    background: linear-gradient(140deg, #444, #222);
-    border: 3px solid #ead19f;
+    background: var(--primary-soft);
+    border: 3px solid var(--primary-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-dark);
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.avatar-fallback {
+    background: var(--primary-soft);
+    border: 3px solid var(--primary-muted);
+    color: var(--primary-dark);
 }
 
 .employee-avatar {
@@ -574,8 +569,8 @@ summary:focus-visible {
     border-radius: 50%;
     margin-bottom: 0.65rem;
     object-fit: cover;
-    border: 4px solid #ead19f;
-    box-shadow: 0 8px 16px rgba(113, 83, 28, 0.18);
+    border: 4px solid var(--primary-muted);
+    box-shadow: 0 8px 16px rgba(31, 45, 61, 0.08);
 }
 
 .employee-avatar.register-preview {
@@ -643,32 +638,32 @@ summary:focus-visible {
 .schedule-mode-pill {
     display: inline-flex;
     align-items: center;
-    border: 1px solid #d7bf77;
+    border: 1px solid var(--line);
     border-radius: 999px;
     padding: 0.2rem 0.55rem;
     font-size: 0.75rem;
     font-weight: 600;
-    color: #6a4f08;
-    background: #fff4d8;
+    color: var(--primary-dark);
+    background: #eef4fb;
 }
 
 .schedule-mode-pill.editable {
-    background: #fff6df;
-    border-color: #d7bf77;
-    color: #6a4f08;
+    background: #e7eff9;
+    border-color: var(--line);
+    color: var(--primary-dark);
 }
 
 .schedule-mode-pill.readonly {
-    background: #fff4d8;
+    background: #eef4fb;
 }
 
 .schedule-mode-banner.readonly {
-    background: #eef5fc;
+    background: #f5f8fc;
 }
 
 .schedule-mode-banner.editable {
-    background: #fff6df;
-    border-color: #d7bf77;
+    background: #eef4fb;
+    border-color: var(--line);
 }
 
 .schedule-legend-panel {
@@ -712,35 +707,40 @@ summary:focus-visible {
 }
 
 .staff-pool-pill.active {
-    background: #f8dfae;
-    border-color: #b6772d;
-    box-shadow: 0 0 0 2px #eed3a0;
+    background: var(--primary-soft);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary-muted);
     transform: translateY(-1px);
 }
 
-.staff-pool-pill.role-color.head-pawtender {
-    background: #d1fae5;
-    color: #065f46;
-    border-color: #34d399;
+.staff-pool-pill.role-color.chef {
+    background: #e8f1fb;
+    color: #2f5c83;
+    border-color: #aacbe6;
 }
 
-.staff-pool-pill.role-color.snack-sprinter {
-    background: #ffedd5;
-    color: #9a3412;
-    border-color: #fb923c;
-    box-shadow: inset 0 0 0 1px rgba(154, 52, 18, 0.3);
+.staff-pool-pill.role-color.waiter {
+    background: #f1f6fb;
+    color: #334a66;
+    border-color: #bdcfdf;
 }
 
-.staff-pool-pill.role-color.taste-tester {
-    background: #ffe4e6;
-    color: #9f1239;
-    border-color: #fb7185;
+.staff-pool-pill.role-color.bartender {
+    background: #f4eff8;
+    color: #553d6c;
+    border-color: #c8b7d9;
 }
 
-.staff-pool-pill.role-color.chief-napper {
-    background: #e0e7ff;
-    color: #3730a3;
-    border-color: #818cf8;
+.staff-pool-pill.role-color.cook {
+    background: #f7f2eb;
+    color: #5f4d3a;
+    border-color: #d8c5ae;
+}
+
+.staff-pool-pill.role-color.hostess {
+    background: #eef4fb;
+    color: #2d516f;
+    border-color: #b6cde3;
 }
 
 .staff-pool-pill.role-color.default {
@@ -749,22 +749,24 @@ summary:focus-visible {
     border-color: #aac3df;
 }
 
-.staff-pool-pill.role-color.head-pawtender.active {
-    box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.36);
+.staff-pool-pill.role-color.chef.active {
+    box-shadow: 0 0 0 2px rgba(43, 91, 134, 0.24);
 }
 
-.staff-pool-pill.role-color.snack-sprinter.active {
-    box-shadow:
-        inset 0 0 0 1px rgba(154, 52, 18, 0.3),
-        0 0 0 2px rgba(251, 146, 60, 0.4);
+.staff-pool-pill.role-color.waiter.active {
+    box-shadow: 0 0 0 2px rgba(51, 74, 102, 0.24);
 }
 
-.staff-pool-pill.role-color.taste-tester.active {
-    box-shadow: 0 0 0 2px rgba(251, 113, 133, 0.36);
+.staff-pool-pill.role-color.bartender.active {
+    box-shadow: 0 0 0 2px rgba(85, 61, 108, 0.24);
 }
 
-.staff-pool-pill.role-color.chief-napper.active {
-    box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.38);
+.staff-pool-pill.role-color.cook.active {
+    box-shadow: 0 0 0 2px rgba(95, 77, 58, 0.24);
+}
+
+.staff-pool-pill.role-color.hostess.active {
+    box-shadow: 0 0 0 2px rgba(45, 81, 111, 0.24);
 }
 
 .staff-pool-pill.role-color.default.active {
@@ -829,17 +831,17 @@ summary:focus-visible {
 }
 
 .grid-cell.header {
-    background: #f5e5bc;
+    background: #eef4fb;
     font-weight: 600;
 }
 
 .grid-cell.shift-label {
     justify-content: flex-start;
-    background: #fff6df;
+    background: #f7fafd;
 }
 
 .grid-cell.booked {
-    background: #fffaf0;
+    background: #f9fcff;
 }
 
 
@@ -888,7 +890,7 @@ summary:focus-visible {
     padding: 0.34rem 0.3rem;
     font-size: 0.73rem;
     text-align: center;
-    border: 1px solid #aac3df;
+    border: 1px solid #c7d9ea;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -896,38 +898,43 @@ summary:focus-visible {
 }
 
 .slot-block.assigned {
-    background: #f8eaca;
-    color: #6c4c1d;
-    border-color: #ddb36c;
+    background: #eaf2fb;
+    color: var(--primary-dark);
+    border-color: #aacbe6;
 }
 
 .slot-block.assigned.role-color {
     border-width: 2px;
 }
 
-.slot-block.assigned.role-color.head-pawtender {
-    background: #d1fae5;
-    color: #065f46;
-    border-color: #34d399;
+.slot-block.assigned.role-color.chef {
+    background: #e8f1fb;
+    color: #2f5c83;
+    border-color: #aacbe6;
 }
 
-.slot-block.assigned.role-color.snack-sprinter {
-    background: #ffedd5;
-    color: #9a3412;
-    border-color: #fb923c;
-    box-shadow: inset 0 0 0 1px rgba(154, 52, 18, 0.3);
+.slot-block.assigned.role-color.waiter {
+    background: #f1f6fb;
+    color: #334a66;
+    border-color: #bdcfdf;
 }
 
-.slot-block.assigned.role-color.taste-tester {
-    background: #ffe4e6;
-    color: #9f1239;
-    border-color: #fb7185;
+.slot-block.assigned.role-color.bartender {
+    background: #f4eff8;
+    color: #553d6c;
+    border-color: #c8b7d9;
 }
 
-.slot-block.assigned.role-color.chief-napper {
-    background: #e0e7ff;
-    color: #3730a3;
-    border-color: #818cf8;
+.slot-block.assigned.role-color.cook {
+    background: #f7f2eb;
+    color: #5f4d3a;
+    border-color: #d8c5ae;
+}
+
+.slot-block.assigned.role-color.hostess {
+    background: #eef4fb;
+    color: #2d516f;
+    border-color: #b6cde3;
 }
 
 .slot-block.assigned.role-color.default {
@@ -937,16 +944,16 @@ summary:focus-visible {
 }
 
 .slot-block.assigned.mine {
-    border-color: #c48932;
-    box-shadow: inset 0 0 0 1px #e7c98d;
+    border-color: #7fa5cc;
+    box-shadow: inset 0 0 0 1px rgba(47, 105, 141, 0.18);
     padding-right: 1.2rem;
-    background: #fbe5b2;
+    background: #dae7f6;
 }
 
 .slot-block.open {
-    background: #ebf9ee;
-    color: #2f6c3a;
-    border: 2px dashed #5ca66b;
+    background: #e6f2fd;
+    color: #235073;
+    border: 2px dashed #8baac9;
     font-weight: 700;
     letter-spacing: 0.02em;
 }
@@ -1053,23 +1060,23 @@ summary:focus-visible {
 }
 
 .schedule-cell-hidden {
-    background: #f4ecd9;
+    background: #eef4fb;
 }
 
 .open-slot-badge {
     font-size: 0.7rem;
     padding: 0.14rem 0.42rem;
     border-radius: 999px;
-    border: 1px solid #d3b674;
+    border: 1px solid #a9c8e6;
 }
 
 .open-slot-badge.open {
-    background: #e6f5df;
-    color: #2f5d1e;
+    background: #e5f0fb;
+    color: #235073;
 }
 
 .open-slot-badge.closed {
-    background: #f6e3e3;
+    background: #f4e6e8;
     color: #7d2d2d;
 }
 
@@ -1079,9 +1086,9 @@ summary:focus-visible {
 }
 
 .open-slot-btn {
-    border: 1px solid #d2b475;
-    background: #fff7e4;
-    color: #664617;
+    border: 1px solid #a9c8e6;
+    background: #f3f8ff;
+    color: #2f5b86;
     border-radius: 4px;
     width: 22px;
     height: 22px;
@@ -1091,7 +1098,7 @@ summary:focus-visible {
 
 .panel-subtle {
     margin-top: 1rem;
-    background: #fff8e8;
+    background: #f4f8fd;
     border: 1px dashed var(--line);
     border-radius: 12px;
     padding: 0.8rem;
@@ -1111,14 +1118,14 @@ summary:focus-visible {
 .shift-request-item {
     border: 1px solid var(--line);
     border-radius: 12px;
-    background: #fffdf5;
+    background: #f8fbff;
     padding: 0.55rem 0.65rem;
 }
 
 .playful-empty {
-    border: 1px dashed #dcbf84;
+    border: 1px dashed #c6d6ea;
     border-radius: 12px;
-    background: #fff7e6;
+    background: #f4f8fd;
     padding: 0.65rem 0.75rem;
 }
 
@@ -1154,7 +1161,7 @@ table {
     position: sticky;
     top: 0;
     z-index: 2;
-    background: #f5e5bc;
+    background: #eef4fb;
 }
 
 .schedule-matrix-table th:first-child,
@@ -1162,16 +1169,16 @@ table {
     position: sticky;
     left: 0;
     z-index: 1;
-    background: #fff7e3;
+    background: #f8fbff;
 }
 
 .schedule-matrix-table thead th:first-child {
     z-index: 3;
-    background: #f2deae;
+    background: #e7f1fb;
 }
 
 .schedule-matrix-table tbody tr:nth-child(even) td {
-    background: #fffdf7;
+    background: #f7fbff;
 }
 
 th,
@@ -1196,11 +1203,11 @@ td:first-child {
 }
 
 .availability-chip.available {
-    background: #def1ce;
+    background: #e6f2fa;
 }
 
 .availability-chip.unavailable {
-    background: #f5cccc;
+    background: #f8e7eb;
 }
 
 .team-availability-header {

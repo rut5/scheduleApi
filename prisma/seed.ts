@@ -9,14 +9,44 @@ const seed = async () => {
   await prisma.user.deleteMany();
   await prisma.shift.deleteMany();
 
+  // Create employer user
   const adminPasswordHash = await bcrypt.hash("1234", 10);
-  await prisma.user.create({
+  const employerUser = await prisma.user.create({
     data: {
       email: "admin@sundsgarden.se",
       passwordHash: adminPasswordHash,
       role: "EMPLOYER",
     },
   });
+
+  // Create sample employees
+  const employeesData = [
+    { firstName: "Anna", lastName: "Andersson", loginCode: "anna", role: "Chef" },
+    { firstName: "Erik", lastName: "Eriksson", loginCode: "erik", role: "Waiter" },
+    { firstName: "Lars", lastName: "Larsson", loginCode: "lars", role: "Cook" },
+    { firstName: "Sofia", lastName: "Svensson", loginCode: "sofia", role: "Hostess" },
+  ];
+
+  for (const emp of employeesData) {
+    const passwordHash = await bcrypt.hash("1234", 10);
+    const user = await prisma.user.create({
+      data: {
+        email: `${emp.loginCode}@sundsgarden.se`,
+        passwordHash,
+        role: "EMPLOYEE",
+      },
+    });
+
+    await prisma.employee.create({
+      data: {
+        firstName: emp.firstName,
+        lastName: emp.lastName,
+        loginCode: emp.loginCode,
+        role: emp.role,
+        userId: user.id,
+      },
+    });
+  }
 
   await prisma.shift.createMany({
     data: [

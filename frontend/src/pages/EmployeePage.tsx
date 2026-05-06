@@ -321,7 +321,7 @@ export default function EmployeePage(): ReactElement {
     );
   };
 
-  const headerAvatar = getProfileImage(myUser.username, profileImageKey);
+  const headerAvatar = undefined;
   const headerInitial = myUser.name.slice(0, 1).toUpperCase();
 
   const toDisplayName = (name: string): string =>
@@ -590,20 +590,12 @@ export default function EmployeePage(): ReactElement {
       {/* Global dashboard header with role context and quick logout. */}
       <header className="topbar">
         <div className="topbar-left">
-          {headerAvatar ? (
-            <img
-              className="topbar-avatar"
-              src={headerAvatar}
-              alt={myUser.name}
-            />
-          ) : (
-            <div
-              className="topbar-avatar topbar-avatar-fallback"
-              aria-hidden="true"
-            >
-              {headerInitial}
-            </div>
-          )}
+          <div
+            className="topbar-avatar topbar-avatar-fallback"
+            aria-hidden="true"
+          >
+            {headerInitial}
+          </div>
           <h1>Sundsgårdens</h1>
           <p className="topbar-subtitle">Welcome back, {getFirstName(myUser.name)}</p>
         </div>
@@ -648,18 +640,11 @@ export default function EmployeePage(): ReactElement {
           {section === "profile" && (
             <section className="panel">
               <h2>My Profile</h2>
-              {myUser &&
-              (selectedProfileImageDataUrl ||
-                getProfileImage(myUser.username, profileImageKey)) ? (
+              {myUser ? (
                 <div className="profile-header-card">
-                  <img
-                    className="profile-avatar"
-                    src={
-                      selectedProfileImageDataUrl ||
-                      getProfileImage(myUser.username, profileImageKey)
-                    }
-                    alt={myUser.name}
-                  />
+                  <div className="profile-avatar profile-avatar-fallback" aria-hidden="true">
+                    {headerInitial}
+                  </div>
                   <div>
                     <strong>{myUser.name}</strong>
                     <p className="muted">Employee profile</p>
