@@ -9,7 +9,7 @@
     --primary-dark: #244d74;
     --primary-soft: #e9f1fb;
     --ok: #d8e4d9;
-    --warn: #f7e3b8;
+    --warn: #e8edf2;
     --bad: #f4d8d8;
     --shadow: 0 18px 40px rgba(31, 45, 61, 0.08);
 }
@@ -440,9 +440,9 @@ button {
 input,
 select {
     padding: 0.45rem 0.5rem;
-    border: 1px solid #dfc586;
+    border: 1px solid var(--line);
     border-radius: 10px;
-    background: #fffdf7;
+    background: #ffffff;
     width: 100%;
 }
 
@@ -504,7 +504,7 @@ summary:focus-visible {
     border: 1px solid var(--line);
     border-radius: 12px;
     padding: 0.9rem;
-    background: #fffdf8;
+    background: var(--panel);
     display: grid;
     justify-items: center;
 }
@@ -685,21 +685,21 @@ summary:focus-visible {
 }
 
 .staff-pool {
-    border: 1px dashed #d2b271;
+    border: 1px dashed var(--line);
     border-radius: 8px;
     padding: 0.6rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.35rem;
-    background: #fff7e8;
+    background: var(--bg);
     margin-bottom: 0.8rem;
 }
 
 .staff-pool-pill {
-    border: 1px solid #d3b373;
+    border: 1px solid var(--line);
     border-radius: 999px;
     background: #fff;
-    color: #6d4e1d;
+    color: var(--text);
     padding: 0.24rem 0.5rem;
     font-size: 0.76rem;
     cursor: pointer;
@@ -732,9 +732,9 @@ summary:focus-visible {
 }
 
 .staff-pool-pill.role-color.cook {
-    background: #f7f2eb;
-    color: #5f4d3a;
-    border-color: #d8c5ae;
+    background: #edf4fb;
+    color: #2c4f6e;
+    border-color: #b0cce3;
 }
 
 .staff-pool-pill.role-color.hostess {
@@ -762,7 +762,7 @@ summary:focus-visible {
 }
 
 .staff-pool-pill.role-color.cook.active {
-    box-shadow: 0 0 0 2px rgba(95, 77, 58, 0.24);
+    box-shadow: 0 0 0 2px rgba(44, 79, 110, 0.24);
 }
 
 .staff-pool-pill.role-color.hostess.active {
@@ -795,7 +795,7 @@ summary:focus-visible {
 .schedule-mobile-card {
     border: 1px solid var(--line);
     border-radius: 12px;
-    background: #fffaf0;
+    background: var(--panel);
     padding: 0.6rem;
     margin-bottom: 0.55rem;
     display: grid;
@@ -926,9 +926,9 @@ summary:focus-visible {
 }
 
 .slot-block.assigned.role-color.cook {
-    background: #f7f2eb;
-    color: #5f4d3a;
-    border-color: #d8c5ae;
+    background: #edf4fb;
+    color: #2c4f6e;
+    border-color: #b0cce3;
 }
 
 .slot-block.assigned.role-color.hostess {

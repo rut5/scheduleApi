@@ -445,6 +445,10 @@ export default function EmployerPage(): ReactElement {
       setRegisterError("Enter a login code for the employee.");
       return;
     }
+    if (loginCode.length < 6) {
+      setRegisterError("Login code must be at least 6 characters.");
+      return;
+    }
     // Create the employee through the backend and then refresh employee data.
     try {
       await createEmployee({

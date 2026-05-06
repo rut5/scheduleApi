@@ -65,11 +65,14 @@ export const assignEmployee = async (req: Request, res: Response) => {
       return
     }
 
-    const slot = await getSlot(date, shiftRecord.id)
+    let slot = await getSlot(date, shiftRecord.id)
     if (!slot) {
-      logger.warn(`Schedule slot not found for ${shift} on ${date}`)
-      sendError(res, 404, "Schedule slot not found")
-      return
+      const startOfDay = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()))
+      slot = await prisma.scheduleEntry.create({
+        data: { date: startOfDay, shiftId: shiftRecord.id },
+        include: { employees: true, shift: true },
+      })
+      logger.info(`Created schedule slot for ${shift} on ${date}`)
     }
 
     if (req.user?.role === "EMPLOYEE" && employee.userId !== req.user.id) {

@@ -43,7 +43,7 @@ export default function LoginPage(): ReactElement {
           <div className="pet-login-branding">
             <h1>Sundsgårdens</h1>
             <p className="login-tagline">
-              Staff sign in for restaurant scheduling and shift planning.
+              Staff sign in for restaurant scheduling and shift planning
             </p>
           </div>
 

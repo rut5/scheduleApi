@@ -21,17 +21,23 @@ const seed = async () => {
 
   // Create sample employees
   const employeesData = [
-    { firstName: "Anna", lastName: "Andersson", loginCode: "anna", role: "Chef" },
-    { firstName: "Erik", lastName: "Eriksson", loginCode: "erik", role: "Waiter" },
-    { firstName: "Lars", lastName: "Larsson", loginCode: "lars", role: "Cook" },
-    { firstName: "Sofia", lastName: "Svensson", loginCode: "sofia", role: "Hostess" },
+    { firstName: "Anna", lastName: "Andersson", loginCode: "anna01", role: "Chef" },
+    { firstName: "Erik", lastName: "Eriksson", loginCode: "erik01", role: "Waiter" },
+    { firstName: "Lars", lastName: "Larsson", loginCode: "lars01", role: "Cook" },
+    { firstName: "Sofia", lastName: "Svensson", loginCode: "sofia01", role: "Hostess" },
+    { firstName: "Rut", lastName: "Wintzell", loginCode: "rut001", role: "Waiter" },
+    { firstName: "Maja", lastName: "Lindqvist", loginCode: "maja01", role: "Hostess" },
+    { firstName: "Johan", lastName: "Berg", loginCode: "johan1", role: "Cook" },
+    { firstName: "Klara", lastName: "Ström", loginCode: "klara1", role: "Bartender" },
+    { firstName: "Oscar", lastName: "Nilsson", loginCode: "oscar1", role: "Waiter" },
+    { firstName: "Vera", lastName: "Lundgren", loginCode: "vera01", role: "Chef" },
   ];
 
   for (const emp of employeesData) {
     const passwordHash = await bcrypt.hash("1234", 10);
     const user = await prisma.user.create({
       data: {
-        email: `${emp.loginCode}@sundsgarden.se`,
+        email: `${emp.firstName.toLowerCase()}.${emp.lastName.toLowerCase()}@sundsgarden.se`,
         passwordHash,
         role: "EMPLOYEE",
       },
@@ -57,8 +63,8 @@ const seed = async () => {
   });
 
   const shifts = await prisma.shift.findMany();
-  const start = new Date("2026-04-01T00:00:00.000Z");
-  const end = new Date("2026-04-31T00:00:00.000Z");
+  const start = new Date("2026-05-01T00:00:00.000Z");
+  const end = new Date("2026-05-31T00:00:00.000Z");
 
   for (let d = new Date(start); d <= end; d.setUTCDate(d.getUTCDate() + 1)) {
     for (const shift of shifts) {

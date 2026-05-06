@@ -19,7 +19,8 @@ export const sendError = (res: express.Response, stat: number, error: unknown): 
 export const inputValidation = (schema: ZodType, data: unknown, res: express.Response): boolean => {
     const result = schema.safeParse(data)
     if (!result.success) {
-        sendError(res, 400, result.error.message)
+        const message = result.error.issues.map(i => i.message).join(", ")
+        sendError(res, 400, message)
         return false
     }
     return true
