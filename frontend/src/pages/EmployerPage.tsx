@@ -228,15 +228,15 @@ export default function EmployerPage(): ReactElement {
     window.setTimeout(() => setToast(""), TOAST_DURATION_MS);
   };
 
-  // Clear session and return to login page.
   const logout = (): void => {
     clearCurrentUser();
+    sessionStorage.removeItem("token");
     navigate("/login", { replace: true });
   };
 
-  // Load schedule from backend when entering schedule section.
   useEffect(() => {
     loadEmployees();
+    loadSchedule();
   }, []);
 
   useEffect(() => {

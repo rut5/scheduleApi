@@ -220,6 +220,7 @@ export default function EmployeePage(): ReactElement {
   // Clear session and return to login page.
   const logout = (): void => {
     clearCurrentUser();
+    sessionStorage.removeItem("token");
     navigate("/login", { replace: true });
   };
 

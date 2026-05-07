@@ -714,33 +714,33 @@ summary:focus-visible {
 }
 
 .staff-pool-pill.role-color.chef {
-    background: #e8f1fb;
-    color: #2f5c83;
-    border-color: #aacbe6;
+    background: #e0f4f2;
+    color: #1a6b62;
+    border-color: #7fc8c0;
 }
 
 .staff-pool-pill.role-color.waiter {
-    background: #f1f6fb;
-    color: #334a66;
-    border-color: #bdcfdf;
+    background: #fdeee3;
+    color: #8a4210;
+    border-color: #f0a87a;
 }
 
 .staff-pool-pill.role-color.bartender {
-    background: #f4eff8;
-    color: #553d6c;
-    border-color: #c8b7d9;
+    background: #efe8f7;
+    color: #5c2d91;
+    border-color: #b99ad9;
 }
 
 .staff-pool-pill.role-color.cook {
-    background: #edf4fb;
-    color: #2c4f6e;
-    border-color: #b0cce3;
+    background: #e3f5e1;
+    color: #2a6b25;
+    border-color: #82c47c;
 }
 
 .staff-pool-pill.role-color.hostess {
-    background: #eef4fb;
-    color: #2d516f;
-    border-color: #b6cde3;
+    background: #fce8ee;
+    color: #8a2040;
+    border-color: #e89ab0;
 }
 
 .staff-pool-pill.role-color.default {
@@ -750,27 +750,27 @@ summary:focus-visible {
 }
 
 .staff-pool-pill.role-color.chef.active {
-    box-shadow: 0 0 0 2px rgba(43, 91, 134, 0.24);
+    box-shadow: 0 0 0 2px rgba(26, 107, 98, 0.28);
 }
 
 .staff-pool-pill.role-color.waiter.active {
-    box-shadow: 0 0 0 2px rgba(51, 74, 102, 0.24);
+    box-shadow: 0 0 0 2px rgba(138, 66, 16, 0.28);
 }
 
 .staff-pool-pill.role-color.bartender.active {
-    box-shadow: 0 0 0 2px rgba(85, 61, 108, 0.24);
+    box-shadow: 0 0 0 2px rgba(92, 45, 145, 0.28);
 }
 
 .staff-pool-pill.role-color.cook.active {
-    box-shadow: 0 0 0 2px rgba(44, 79, 110, 0.24);
+    box-shadow: 0 0 0 2px rgba(42, 107, 37, 0.28);
 }
 
 .staff-pool-pill.role-color.hostess.active {
-    box-shadow: 0 0 0 2px rgba(45, 81, 111, 0.24);
+    box-shadow: 0 0 0 2px rgba(138, 32, 64, 0.28);
 }
 
 .staff-pool-pill.role-color.default.active {
-    box-shadow: 0 0 0 2px rgba(170, 195, 223, 0.45);
+    box-shadow: 0 0 0 2px rgba(53, 80, 111, 0.28);
 }
 
 .staff-pool-pill:disabled {
@@ -908,33 +908,33 @@ summary:focus-visible {
 }
 
 .slot-block.assigned.role-color.chef {
-    background: #e8f1fb;
-    color: #2f5c83;
-    border-color: #aacbe6;
+    background: #e0f4f2;
+    color: #1a6b62;
+    border-color: #7fc8c0;
 }
 
 .slot-block.assigned.role-color.waiter {
-    background: #f1f6fb;
-    color: #334a66;
-    border-color: #bdcfdf;
+    background: #fdeee3;
+    color: #8a4210;
+    border-color: #f0a87a;
 }
 
 .slot-block.assigned.role-color.bartender {
-    background: #f4eff8;
-    color: #553d6c;
-    border-color: #c8b7d9;
+    background: #efe8f7;
+    color: #5c2d91;
+    border-color: #b99ad9;
 }
 
 .slot-block.assigned.role-color.cook {
-    background: #edf4fb;
-    color: #2c4f6e;
-    border-color: #b0cce3;
+    background: #e3f5e1;
+    color: #2a6b25;
+    border-color: #82c47c;
 }
 
 .slot-block.assigned.role-color.hostess {
-    background: #eef4fb;
-    color: #2d516f;
-    border-color: #b6cde3;
+    background: #fce8ee;
+    color: #8a2040;
+    border-color: #e89ab0;
 }
 
 .slot-block.assigned.role-color.default {
